@@ -3,7 +3,7 @@
 Build wasm
 
 ```cmd
-wasm-zig-exp> zig build-lib -femit-bin=public\main.wasm -target wasm32-freestanding -I src\ -O ReleaseSmall src\main.zig
+wasm-zig-exp> zig build-exe -femit-bin=public\main.wasm -target wasm32-freestanding -I src\ -O ReleaseSmall src\main.zig
 ```
 
 To test

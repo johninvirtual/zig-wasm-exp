@@ -10,7 +10,6 @@
   <body>
     <p>output from zig function = <span id="zig"></span></p>
     <p>output from c function = <span id="c"></span></p>
-    <p>output from cpp function = <span id="cpp"></span></p>
 
     <script>
       var exports;
@@ -23,11 +22,9 @@
 
           console.log(`Running myZigFunction ${exports.myZigFunction()} `);
           console.log(`Running myCFunction ${exports.myCFunction()} `);
-          console.log(`Running myCppFunction ${exports.myCppFunction()} `);
 
           document.getElementById("zig").innerHTML = exports.myZigFunction();
           document.getElementById("c").innerHTML = exports.myCFunction();
-          document.getElementById("cpp").innerHTML = exports.myCppFunction();
         }
       );
     </script>
