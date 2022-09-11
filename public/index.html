@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src=""></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p>output from zig function = <span id="zig"></span></p>
+    <p>output from c function = <span id="c"></span></p>
+    <p>output from cpp function = <span id="cpp"></span></p>
+
+    <script>
+      var exports;
+      WebAssembly.instantiateStreaming(fetch("main.wasm"), {}).then(
+        (results) => {
+          // Do something with the results!
+          console.log(results);
+
+          exports = results.instance.exports;
+
+          console.log(`Running myZigFunction ${exports.myZigFunction()} `);
+          console.log(`Running myCFunction ${exports.myCFunction()} `);
+          console.log(`Running myCppFunction ${exports.myCppFunction()} `);
+
+          document.getElementById("zig").innerHTML = exports.myZigFunction();
+          document.getElementById("c").innerHTML = exports.myCFunction();
+          document.getElementById("cpp").innerHTML = exports.myCppFunction();
+        }
+      );
+    </script>
+  </body>
+</html>
